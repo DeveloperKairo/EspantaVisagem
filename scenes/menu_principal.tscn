@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://dj0y63123ucrl"]
+
+[ext_resource type="Texture2D" uid="uid://b28kyyxga4rjj" path="res://assets/sprites/bgmenu.jpeg" id="1_i85hu"]
+[ext_resource type="Script" uid="uid://csjvxmf76d50q" path="res://scripts/menu_principal.gd" id="1_mk4g1"]
+[ext_resource type="Texture2D" uid="uid://dogox8a43jofp" path="res://assets/sprites/logo.png" id="3_iep14"]
+
+[node name="MenuPrincipal" type="Control" unique_id=629568547]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 720.0
+script = ExtResource("1_mk4g1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1549767370]
+layout_mode = 0
+offset_left = -109.0
+offset_right = 2643.0
+offset_bottom = 1536.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_i85hu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1449986409]
+position = Vector2(589, 213)
+texture = ExtResource("3_iep14")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1942476835]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 311.0
+offset_right = 673.0
+offset_bottom = 482.0
+
+[node name="IniciarButton" type="Button" parent="VBoxContainer" unique_id=838597044]
+layout_mode = 2
+text = "Iniciar Jogo"
+
+[node name="RecordsButton" type="Button" parent="VBoxContainer" unique_id=140302557]
+layout_mode = 2
+text = "Ver Recordes"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=979406562]
+layout_mode = 2
+text = "Opções"
+
+[node name="VisagensButton" type="Button" parent="VBoxContainer" unique_id=1622345942]
+layout_mode = 2
+text = "Visagens 
+"
+
+[node name="SairButton" type="Button" parent="VBoxContainer" unique_id=982160546]
+layout_mode = 2
+text = "Sair do Jogo"
+
+[node name="PainelRecorde" type="Panel" parent="." unique_id=1895063789]
+visible = false
+layout_mode = 0
+offset_left = 350.0
+offset_top = 234.0
+offset_right = 854.0
+offset_bottom = 576.0
+
+[node name="Button" type="Button" parent="PainelRecorde" unique_id=1652592976]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 270.0
+offset_right = 319.0
+offset_bottom = 301.0
+text = "Fechar"
+
+[node name="TextoRecorde" type="Label" parent="PainelRecorde" unique_id=571224142]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 80.0
+offset_right = 456.0
+offset_bottom = 103.0
+
+[node name="PainelOpcoes" type="Panel" parent="." unique_id=1560448321]
+visible = false
+layout_mode = 0
+offset_left = 289.0
+offset_top = 213.0
+offset_right = 889.0
+offset_bottom = 594.0
+
+[node name="Titulo" type="Label" parent="PainelOpcoes" unique_id=728956618]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 21.0
+offset_right = 356.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 32
+text = "Opções"
+
+[node name="Volume" type="Label" parent="PainelOpcoes" unique_id=410962073]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 98.0
+offset_right = 217.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 24
+text = "Volume Geral"
+
+[node name="Brilho" type="Label" parent="PainelOpcoes" unique_id=1686100121]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 203.0
+offset_right = 217.0
+offset_bottom = 237.0
+theme_override_font_sizes/font_size = 24
+text = "Brilho da Tela"
+
+[node name="SliderVolume" type="HSlider" parent="PainelOpcoes" unique_id=667055611]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 151.0
+offset_right = 565.0
+offset_bottom = 186.0
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SliderBrilho" type="HSlider" parent="PainelOpcoes" unique_id=146043315]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 255.0
+offset_right = 565.0
+offset_bottom = 290.0
+min_value = 0.3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Fechar" type="Button" parent="PainelOpcoes" unique_id=1571350221]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 319.0
+offset_right = 434.0
+offset_bottom = 350.0
+text = "Fechar"
+
+[node name="PainelBestiario" type="Panel" parent="." unique_id=1504693035]
+visible = false
+layout_mode = 0
+offset_left = 96.0
+offset_top = 51.0
+offset_right = 1094.0
+offset_bottom = 682.0
+
+[node name="ListaVisagens" type="ItemList" parent="PainelBestiario" unique_id=1974825720]
+layout_mode = 0
+offset_right = 499.0
+offset_bottom = 631.0
+
+[node name="FotoVisagem" type="TextureRect" parent="PainelBestiario" unique_id=1761715359]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 32.0
+offset_right = 849.0
+offset_bottom = 245.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NomeVisagem" type="Label" parent="PainelBestiario" unique_id=19450282]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 245.0
+offset_right = 861.0
+offset_bottom = 295.0
+
+[node name="DescricaoVisagem" type="Label" parent="PainelBestiario" unique_id=954429548]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 0
+offset_left = 577.0
+offset_top = 330.0
+offset_right = 926.0
+offset_bottom = 543.0
+autowrap_mode = 2
+
+[node name="BotaoFechar" type="Button" parent="PainelBestiario" unique_id=595908210]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 567.0
+offset_right = 795.0
+offset_bottom = 599.0
+text = "Fechar"
+
+[connection signal="pressed" from="VBoxContainer/IniciarButton" to="." method="_on_iniciar_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/RecordsButton" to="." method="_on_records_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/VisagensButton" to="." method="_on_visagens_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SairButton" to="." method="_on_sair_button_pressed"]
+[connection signal="pressed" from="PainelRecorde/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="PainelOpcoes/SliderVolume" to="." method="_on_slider_volume_value_changed"]
+[connection signal="value_changed" from="PainelOpcoes/SliderBrilho" to="." method="_on_slider_brilho_value_changed"]
+[connection signal="pressed" from="PainelOpcoes/Fechar" to="." method="_on_fechar_pressed"]
+[connection signal="item_selected" from="PainelBestiario/ListaVisagens" to="." method="_on_lista_visagens_item_selected"]
+[connection signal="pressed" from="PainelBestiario/BotaoFechar" to="." method="_on_botao_fechar_pressed"]

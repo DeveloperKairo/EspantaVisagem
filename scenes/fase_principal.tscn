@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://ddptqoe6ckpyb"]
+
+[ext_resource type="Script" uid="uid://ctbsiqv6rbcap" path="res://scripts/fase_principal.gd" id="1_g3ctc"]
+[ext_resource type="Texture2D" uid="uid://dnmhyul4puyf5" path="res://assets/sprites/fundo_principal.jpeg" id="2_ag5ny"]
+[ext_resource type="Texture2D" uid="uid://vhpgntek2cdm" path="res://assets/sprites/Player.png" id="3_usui7"]
+[ext_resource type="Texture2D" uid="uid://ujsskccue6ek" path="res://assets/sprites/ActivePlayer.png" id="4_2j03y"]
+[ext_resource type="Texture2D" uid="uid://cp0y157i7yrrd" path="res://assets/sprites/FundoMorte.jpeg" id="5_ag5ny"]
+[ext_resource type="AudioStream" uid="uid://barjyehis0vfp" path="res://assets/audios/susto.mp3" id="6_fx5pu"]
+[ext_resource type="AudioStream" uid="uid://bnq3g1n683lyy" path="res://assets/audios/escudo.mp3" id="7_y3t6s"]
+[ext_resource type="AudioStream" uid="uid://c8y64c2mfjmgr" path="res://assets/audios/milagre.mp3" id="8_xqbvk"]
+
+[sub_resource type="Animation" id="Animation_fx5pu"]
+resource_name = "Desligado"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_usui7")]
+}
+
+[sub_resource type="Animation" id="Animation_y3t6s"]
+resource_name = "Ligado"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_2j03y")]
+}
+
+[sub_resource type="Animation" id="Animation_xqbvk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_usui7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_327i7"]
+_data = {
+&"Desligado": SubResource("Animation_fx5pu"),
+&"Ligado": SubResource("Animation_y3t6s"),
+&"RESET": SubResource("Animation_xqbvk")
+}
+
+[node name="FasePrincipal" type="Node2D" unique_id=827592707]
+script = ExtResource("1_g3ctc")
+
+[node name="Fundo" type="Sprite2D" parent="." unique_id=1005864496]
+position = Vector2(-58.999996, -4.9999995)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("2_ag5ny")
+centered = false
+
+[node name="Jogador" type="Sprite2D" parent="." unique_id=2095306336]
+position = Vector2(581, 577.00006)
+scale = Vector2(2.4140625, 2.4140625)
+texture = ExtResource("3_usui7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Jogador" unique_id=636290808]
+libraries/ = SubResource("AnimationLibrary_327i7")
+autoplay = &"Desligado"
+
+[node name="PontosDeSurgimento" type="Node2D" parent="." unique_id=656655431]
+
+[node name="PontoJanela" type="Marker2D" parent="PontosDeSurgimento" unique_id=770030354]
+position = Vector2(533, 344)
+
+[node name="PontoPorta" type="Marker2D" parent="PontosDeSurgimento" unique_id=574581624]
+position = Vector2(678, 394)
+
+[node name="PontoCeu" type="Marker2D" parent="PontosDeSurgimento" unique_id=119416756]
+position = Vector2(380, 139)
+
+[node name="PontoTelhadoDir" type="Marker2D" parent="PontosDeSurgimento" unique_id=1304742129]
+position = Vector2(760, 218)
+
+[node name="PontoMoitaDir" type="Marker2D" parent="PontosDeSurgimento" unique_id=1702799480]
+position = Vector2(797, 460)
+
+[node name="PontoEstrada" type="Marker2D" parent="PontosDeSurgimento" unique_id=1025560888]
+position = Vector2(1056, 488)
+
+[node name="PontoFloresta" type="Marker2D" parent="PontosDeSurgimento" unique_id=1450390552]
+position = Vector2(144, 388)
+
+[node name="PontoMoitaEsq" type="Marker2D" parent="PontosDeSurgimento" unique_id=1309903585]
+position = Vector2(318, 430)
+
+[node name="CronometroSusto" type="Timer" parent="." unique_id=342903888]
+wait_time = 2.0
+autostart = true
+
+[node name="CamadaUI" type="CanvasLayer" parent="." unique_id=447790576]
+process_mode = 3
+
+[node name="TextoVisagens" type="Label" parent="CamadaUI" unique_id=676397693]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 28
+text = "Visagens Espantadas: 0"
+
+[node name="TextoFe" type="Label" parent="CamadaUI" unique_id=1245091863]
+offset_left = 2.0
+offset_top = 39.0
+offset_right = 313.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 28
+text = "Cargas de Fé: 0"
+
+[node name="TelaMorte" type="TextureRect" parent="CamadaUI" unique_id=332648526]
+visible = false
+offset_left = -100.0
+offset_right = 2716.0
+offset_bottom = 1536.0
+scale = Vector2(0.5, 0.48)
+texture = ExtResource("5_ag5ny")
+
+[node name="TextoFrase" type="Label" parent="CamadaUI/TelaMorte" unique_id=698630498]
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 633.3334
+offset_right = 2002.0
+offset_bottom = 808.3334
+theme_override_font_sizes/font_size = 48
+
+[node name="FotoMonstro" type="TextureRect" parent="CamadaUI/TelaMorte" unique_id=1032790784]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 387.50003
+offset_right = 960.0
+offset_bottom = 1131.2501
+
+[node name="TextoNome" type="Label" parent="CamadaUI/TelaMorte" unique_id=1636683451]
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 387.5
+offset_right = 1674.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 48
+
+[node name="TextoDescricao" type="Label" parent="CamadaUI/TelaMorte" unique_id=1338234621]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 0
+offset_left = 1054.0
+offset_top = 881.25006
+offset_right = 2038.0
+offset_bottom = 1131.25
+theme_override_font_sizes/font_size = 48
+autowrap_mode = 3
+
+[node name="BotaoRecomecar" type="Button" parent="CamadaUI/TelaMorte" unique_id=2079071610]
+layout_mode = 0
+offset_left = 1428.0
+offset_top = 1331.25
+offset_right = 1872.0
+offset_bottom = 1418.75
+theme_override_font_sizes/font_size = 32
+text = "Tentar Novamente"
+
+[node name="BotaoMenu" type="Button" parent="CamadaUI/TelaMorte" unique_id=1666968510]
+layout_mode = 0
+offset_left = 786.0
+offset_top = 1327.083
+offset_right = 1318.0
+offset_bottom = 1418.7498
+theme_override_font_sizes/font_size = 32
+text = "Voltar para o menu"
+
+[node name="BrilhoEscudo" type="ColorRect" parent="CamadaUI" unique_id=1743928501]
+visible = false
+offset_right = 1200.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.99215686, 0.99215686, 0.5058824, 0.20784314)
+
+[node name="Label" type="Label" parent="CamadaUI/BrilhoEscudo" unique_id=1414483986]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 344.0
+offset_right = 883.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 32
+text = "PROTEGIDO PELO ESCUDO DA FÉ"
+
+[node name="TextoAvisos" type="Label" parent="CamadaUI" unique_id=1794106233]
+visible = false
+offset_top = 78.0
+offset_right = 40.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+
+[node name="SomSusto" type="AudioStreamPlayer2D" parent="." unique_id=1650844981]
+process_mode = 3
+stream = ExtResource("6_fx5pu")
+
+[node name="SomEscudo" type="AudioStreamPlayer2D" parent="." unique_id=1838865988]
+process_mode = 3
+stream = ExtResource("7_y3t6s")
+
+[node name="SomMilagre" type="AudioStreamPlayer2D" parent="." unique_id=1227601521]
+process_mode = 3
+stream = ExtResource("8_xqbvk")
+
+[connection signal="timeout" from="CronometroSusto" to="." method="_on_cronometro_susto_timeout"]
+[connection signal="pressed" from="CamadaUI/TelaMorte/BotaoRecomecar" to="." method="_on_botao_recomecar_pressed"]
+[connection signal="pressed" from="CamadaUI/TelaMorte/BotaoMenu" to="." method="_on_botao_menu_pressed"]

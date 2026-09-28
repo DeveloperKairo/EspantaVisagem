@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://caqb5tlljiywk"]
+
+[ext_resource type="Script" uid="uid://dejsu7pdo4s2x" path="res://scripts/monstro.gd" id="1_a3gvj"]
+[ext_resource type="Texture2D" uid="uid://bs12ylmlifbx4" path="res://assets/sprites/EtQuixada.png" id="1_opnnd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdg46"]
+size = Vector2(88, 89)
+
+[node name="Monstro" type="Area2D" unique_id=1929022869]
+script = ExtResource("1_a3gvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1368203952]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_sdg46")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1910976504]
+position = Vector2(-1, 1)
+texture = ExtResource("1_opnnd")
+
+[node name="TimerFuga" type="Timer" parent="." unique_id=2096660328]
+wait_time = 3.0
+autostart = true
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="timeout" from="TimerFuga" to="." method="_on_timer_fuga_timeout"]

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dvxp6nj83ygxt"]
+
+[ext_resource type="Texture2D" uid="uid://cqxeyks8543yq" path="res://assets/sprites/IrmaCoque.png" id="1_yjx5j"]
+
+[sub_resource type="Animation" id="Animation_yjx5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mcmdf"]
+resource_name = "aparecer_e_sumir"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 1.9333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6v4xi"]
+_data = {
+&"RESET": SubResource("Animation_yjx5j"),
+&"aparecer_e_sumir": SubResource("Animation_mcmdf")
+}
+
+[node name="irma_coque" type="Node2D" unique_id=1797824851]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1384035363]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_6v4xi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1841308801]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(25, 25)
+scale = Vector2(1.390625, 1.390625)
+texture = ExtResource("1_yjx5j")
